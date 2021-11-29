@@ -1,0 +1,19 @@
+.btn {
+    display: block;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 30px;
+    cursor: pointer;
+    &-primary {
+        background-color: lightblue;
+        color: blue;
+        &:hover {
+            background-color: blue;
+            color: lightblue;
+        }
+    }
+}
