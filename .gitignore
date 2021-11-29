@@ -1,4 +1,6 @@
 /.idea
 /server/node_modules
 /server/yarn.lock
+/client/node_modules
+/client/yarn.lock
 /dbdata
