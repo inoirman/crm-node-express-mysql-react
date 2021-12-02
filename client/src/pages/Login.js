@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Field from '../components/ui/Field/Field'
 import Button from '../components/ui/Button/Button'
 import { doLogin } from '../store/actionsCreator'
 import Error from '../components/ui/Error/Error'
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
     const dispatch = useDispatch()
-    const errors = useSelector(state => state.errors)
+    const errors = useSelector(state => state.auth.errors)
+    const navigate = useNavigate()
+    const isAuth = useSelector(state => state.auth.auth.isAuth)
+
+    useEffect(()=>{
+        if (isAuth) {
+            navigate("/")
+        }
+    }, [isAuth])
 
     const [login, setLogin] = useState({ email: '', password: '' })
     const onFieldChange = e => {
@@ -33,7 +42,7 @@ const Login = () => {
                 {isError()}
                 <Field
                     id="email"
-                    label="Login"
+                    label="Email (login)"
                     type="text"
                     value={login.email}
                     onFieldChange={onFieldChange}
